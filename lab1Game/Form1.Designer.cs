@@ -34,11 +34,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonGrey = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonContrast = new System.Windows.Forms.Button();
+            this.buttonChannel = new System.Windows.Forms.Button();
+            this.button90 = new System.Windows.Forms.Button();
+            this.button180 = new System.Windows.Forms.Button();
+            this.buttonGauss = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -98,55 +98,55 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // buttonContrast
             // 
-            this.button1.Location = new System.Drawing.Point(12, 463);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Увеличить контрасность на 50 %";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonContrast.Location = new System.Drawing.Point(12, 463);
+            this.buttonContrast.Name = "buttonContrast";
+            this.buttonContrast.Size = new System.Drawing.Size(189, 23);
+            this.buttonContrast.TabIndex = 4;
+            this.buttonContrast.Text = "Увеличить контрасность на 50 %";
+            this.buttonContrast.UseVisualStyleBackColor = true;
+            this.buttonContrast.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonChannel
             // 
-            this.button2.Location = new System.Drawing.Point(12, 492);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Замена каналов";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonChannel.Location = new System.Drawing.Point(12, 492);
+            this.buttonChannel.Name = "buttonChannel";
+            this.buttonChannel.Size = new System.Drawing.Size(189, 23);
+            this.buttonChannel.TabIndex = 5;
+            this.buttonChannel.Text = "Замена каналов";
+            this.buttonChannel.UseVisualStyleBackColor = true;
+            this.buttonChannel.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // button90
             // 
-            this.button3.Location = new System.Drawing.Point(285, 435);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(189, 22);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Поворот 90 градусов";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button90.Location = new System.Drawing.Point(285, 435);
+            this.button90.Name = "button90";
+            this.button90.Size = new System.Drawing.Size(189, 22);
+            this.button90.TabIndex = 6;
+            this.button90.Text = "Поворот 90 градусов";
+            this.button90.UseVisualStyleBackColor = true;
+            this.button90.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // button180
             // 
-            this.button4.Location = new System.Drawing.Point(285, 464);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(189, 22);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Поворот 180 градусов";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button180.Location = new System.Drawing.Point(285, 464);
+            this.button180.Name = "button180";
+            this.button180.Size = new System.Drawing.Size(189, 22);
+            this.button180.TabIndex = 7;
+            this.button180.Text = "Поворот 180 градусов";
+            this.button180.UseVisualStyleBackColor = true;
+            this.button180.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // buttonGauss
             // 
-            this.button5.Location = new System.Drawing.Point(285, 493);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(189, 22);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Размытие по Гауссу";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.buttonGauss.Location = new System.Drawing.Point(285, 493);
+            this.buttonGauss.Name = "buttonGauss";
+            this.buttonGauss.Size = new System.Drawing.Size(189, 22);
+            this.buttonGauss.TabIndex = 8;
+            this.buttonGauss.Text = "Размытие по Гауссу";
+            this.buttonGauss.UseVisualStyleBackColor = true;
+            this.buttonGauss.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
@@ -154,11 +154,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(972, 551);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonGauss);
+            this.Controls.Add(this.button180);
+            this.Controls.Add(this.button90);
+            this.Controls.Add(this.buttonChannel);
+            this.Controls.Add(this.buttonContrast);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.buttonGrey);
             this.Controls.Add(this.pictureBox1);
@@ -183,11 +183,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonGrey;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonContrast;
+        private System.Windows.Forms.Button buttonChannel;
+        private System.Windows.Forms.Button button90;
+        private System.Windows.Forms.Button button180;
+        private System.Windows.Forms.Button buttonGauss;
     }
 }
 

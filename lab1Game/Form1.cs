@@ -16,6 +16,12 @@ namespace lab1Game
         {
             InitializeComponent();
         }
+        struct RGB
+        {
+            public float R;
+            public float G;
+            public float B;
+        }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -44,7 +50,7 @@ namespace lab1Game
                 sfd.Title = "Сохранить картинку как...";
                 sfd.OverwritePrompt = true;
                 sfd.CheckPathExists = true; 
-                sfd.Filter = "Image Files(*.JPG; *.GIF; *.PNG)| *.BMP; *.JPG; *.GIF; *.PNG | All files(*.*) | *.* ";
+                sfd.Filter = "Image Files(*.JPG; *.GIF; *.PNG)| *.JPG; *.GIF; *.PNG | All files(*.*) | *.* ";
                 sfd.ShowHelp = true; 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -60,6 +66,7 @@ namespace lab1Game
                 }
             }
         }
+        //Сделать черно белым
         private void buttonGrey_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null)
@@ -89,7 +96,7 @@ namespace lab1Game
                 MessageBox.Show("Картинка не загружена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Увеличить контраст
         private void button1_Click(object sender, EventArgs e)
         {
             /*
@@ -150,7 +157,7 @@ namespace lab1Game
                 MessageBox.Show("Картинка не загружена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Замена каналов
         private void button2_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null)
@@ -166,10 +173,10 @@ namespace lab1Game
                         float R = (float)((pixel & 0x00FF0000) >> 16); // красный
                         float G = (float)((pixel & 0x0000FF00) >> 8); // зеленый
                         float B = (float)(pixel & 0x000000FF); // синий
-
+                        float tR = R;
                         R = G;
                         G = B;
-                        B = R;
+                        B = tR;
                         UInt32 newPixel = 0xFF000000 | ((UInt32)R << 16) | ((UInt32)G << 8) | ((UInt32)B);
                         OutputImage.SetPixel(i, j, Color.FromArgb((int)newPixel));
                     }
@@ -182,41 +189,59 @@ namespace lab1Game
                 MessageBox.Show("Картинка не загружена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Поворот на 90
         private void button3_Click(object sender, EventArgs e)
         {
-            Bitmap InputImage = new Bitmap(pictureBox1.Image);
-            Bitmap OutputImage = new Bitmap(InputImage.Width, InputImage.Height);
-            OutputImage = InputImage;
-            OutputImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            pictureBox2.Image = OutputImage;
-            сохранитьКакToolStripMenuItem.Enabled = true;
+            if (pictureBox1.Image != null)
+            {
+                Bitmap InputImage = new Bitmap(pictureBox1.Image);
+                Bitmap OutputImage = new Bitmap(InputImage.Width, InputImage.Height);
+                OutputImage = InputImage;
+                OutputImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                pictureBox2.Image = OutputImage;
+                сохранитьКакToolStripMenuItem.Enabled = true;
+            }
+            else 
+            {
+                MessageBox.Show("Картинка не загружена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
+        //Поворот на 180
         private void button4_Click(object sender, EventArgs e)
         {
-            Bitmap InputImage = new Bitmap(pictureBox1.Image);
-            Bitmap OutputImage = new Bitmap(InputImage.Width, InputImage.Height);
-            OutputImage = InputImage;
-            OutputImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            pictureBox2.Image = OutputImage;
-            сохранитьКакToolStripMenuItem.Enabled = true;
+            if (pictureBox1.Image != null)
+            {
+                Bitmap InputImage = new Bitmap(pictureBox1.Image);
+                Bitmap OutputImage = new Bitmap(InputImage.Width, InputImage.Height);
+                OutputImage = InputImage;
+                OutputImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                pictureBox2.Image = OutputImage;
+                сохранитьКакToolStripMenuItem.Enabled = true;
+            }
+            else 
+            {
+               MessageBox.Show("Картинка не загружена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-//-----------------------------------------------------------------------------------------------------------------------------------------
-
-
-        //размыть
+        //Размытие
         private void button5_Click(object sender, EventArgs e)
         {
-            UInt32[,] pixel;
-            Bitmap image = new Bitmap(pictureBox1.Image);
-            Bitmap OutputImage = new Bitmap(image.Width, image.Height);
-            pixel = new UInt32[image.Height, image.Width];
-            for (int y = 0; y < image.Height; y++)
-                for (int x = 0; x < image.Width; x++)
-                    pixel[y, x] = (UInt32)(image.GetPixel(x, y).ToArgb());
-            pixel = matrix_filtration(image.Width, image.Height, pixel, N2, blur);
-            pictureBox2.Image = FromPixelToBitmap(OutputImage,pixel);
+            if (pictureBox1.Image != null)
+            {
+                UInt32[,] pixel;
+                Bitmap image = new Bitmap(pictureBox1.Image);
+                Bitmap OutputImage = new Bitmap(image.Width, image.Height);
+                pixel = new UInt32[image.Height, image.Width];
+                for (int y = 0; y < image.Height; y++)
+                    for (int x = 0; x < image.Width; x++)
+                        pixel[y, x] = (UInt32)(image.GetPixel(x, y).ToArgb());
+                pixel = matrix_filtration(image.Width, image.Height, pixel, N1, blur);
+                pictureBox2.Image = FromPixelToBitmap(OutputImage, pixel);
+            }
+            else 
+            {
+                MessageBox.Show("Картинка не загружена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //преобразование из UINT32 to Bitmap
@@ -230,25 +255,8 @@ namespace lab1Game
 
 
 
-
-
-
-
-
-
-
-        struct RGB
-        {
-            public float R;
-            public float G;
-            public float B;
-        }
-
-
         UInt32[,] matrix_filtration(int W, int H, UInt32[,] pixel, int N, double[,] matryx)
         {
-
-
             int i, j, k, m, gap = (int)(N / 2);
             int tmpH = H + 2 * gap, tmpW = W + 2 * gap;
             UInt32[,] tmppixel = new UInt32[tmpH, tmpW];
@@ -330,21 +338,8 @@ namespace lab1Game
             return Color;
         }
 
-
-
-
-
-
-
-
-        //повышение резкости
-        public const int N1 = 3;
-        public static double[,] sharpness = new double[N1, N1] {{-1, -1, -1},
-                                                               {-1,  9, -1},
-                                                               {-1, -1, -1}};
-
         //размытие
-        public const int N2 = 3;
+        public const int N1 = 3;
         public static double[,] blur = new double[N1, N1] {{0.111, 0.111, 0.111},
                                                                {0.111, 0.111, 0.111},
                                                                {0.111, 0.111, 0.111}};
